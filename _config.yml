@@ -69,7 +69,7 @@ ga_domain: Auto
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "据说每一个猿的指尖都有改变世界的力量     LOL"
+sidebar-about-description: "据说每一个猿的指尖都隐藏着改变世界的力量     LOL"
 sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
