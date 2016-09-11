@@ -46,7 +46,8 @@ tags:
 
 对面 ios 应用来说 由于沙盒机制 正常情况下每个应用都只能对它本身所拥有的文件有写权限  
 也就是说这个应用如果要创建文件夹什么的只能是在它自己的Documents  Library  tmp 目录下  
-像这些歌曲这些一般来说就是在 Documents 目录下了
+像这些歌曲这些一般来说就是在 Documents 目录下了  
+
 
 1、找到 网易云音乐的 Documents 目录 确认歌曲信息  
 
@@ -99,7 +100,8 @@ cy# [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomai
 这个自己想办法 推荐用google 不会用就用必应 还不行就百度吧。。。  
 
 
-3、替换歌曲歌词并修改数据库
+3、替换歌曲歌词并修改数据库  
+
 * 替换歌曲
 
 ```scss
