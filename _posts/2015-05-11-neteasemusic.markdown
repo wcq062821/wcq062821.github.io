@@ -76,7 +76,7 @@ wcqde-iPad:~ root# ps -e | grep App
  5130 ttys000    0:00.01 grep App  
 ```
   
-  用 ps -e | grep App 容易知道neteasemusic 就是网易云音乐了  
+用 ps -e \| grep App 容易知道neteasemusic 就是网易云音乐了  
 
 ```scss
 wcqde-iPad:~ root# cycript -p neteasemusic
@@ -212,7 +212,12 @@ sqlite> .exit
 剩下的那些信息 app 检查到没有的时候会自动帮你从云端同步 可以不用管  
 当然你闲得蛋疼也可以一条一条加 233333  
 关闭网易云音乐  
-把music_storage_v2.sqlite3 拷贝回/var/mobile/Containers/Data/Application/ADD802B1-2407-4869-9FB8-0F677C617325/Documents/UserData/music_storage_v2.sqlite3 覆盖掉原来的数据库
+把music_storage_v2.sqlite3 拷贝回  
+
+```scss
+/var/mobile/Containers/Data/Application/ADD802B1-2407-4869-9FB8-0F677C617325/Documents/UserData/music_storage_v2.sqlite3 
+覆盖掉原来的数据库
+```
 
 ```scss
 wcq-062821@bogon:~/IOSCrack/neteasemusic
