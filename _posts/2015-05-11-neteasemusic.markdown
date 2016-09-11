@@ -85,8 +85,12 @@ cy# [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomai
 #?exit
 ```
 
-使用cycript -p neteasemusic 把 cycript 附加到neteasemusic进程
-通过 [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0] 这个命令输出 Documents目录的路径 并 ?exit 退出Cycript  
+使用cycript -p neteasemusic 把 cycript 附加到neteasemusic进程 通过  
+
+```scss
+[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0] 
+```
+这个命令输出 Documents目录的路径 并 ?exit 退出Cycript  
 
 现在进入 Documents 目录看看有什么东西  
 一翻查找发现在下载下来的歌都存放在 Documents/UserData/Download/done 下面  
@@ -216,8 +220,8 @@ sqlite> .exit
 
 ```scss
 /var/mobile/Containers/Data/Application/ADD802B1-2407-4869-9FB8-0F677C617325/Documents/UserData/music_storage_v2.sqlite3 
-覆盖掉原来的数据库
 ```
+覆盖掉原来的数据库
 
 ```scss
 wcq-062821@bogon:~/IOSCrack/neteasemusic
