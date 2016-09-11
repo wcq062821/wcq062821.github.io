@@ -49,6 +49,7 @@ tags:
 像这些歌曲这些一般来说就是在 Documents 目录下了
 
 1、找到 网易云音乐的 Documents 目录 确认歌曲信息  
+
 ```scss
 wcq-062821@bogon:~/.ssh
 > sudo ssh localhost -p 3333
@@ -58,6 +59,7 @@ root@localhost's password:
   没有搭这个环境的可以直接  ssh root@iphone_ip   来 ssh 登陆
     
 打开网易云音乐这个应用  
+
 ```scss
 wcqde-iPad:~ root# ps -e | grep App  
    81 ??         0:00.71 /System/Library/CoreServices/AppleIDAuthAgent  
@@ -73,6 +75,7 @@ wcqde-iPad:~ root# ps -e | grep App
 ```
   
   用 ps -e | grep App 容易知道neteasemusic 就是网易云音乐了  
+
 ```scss
 wcqde-iPad:~ root# cycript -p neteasemusic
 cy# [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0]
@@ -138,6 +141,7 @@ sqlite> .exit
 ```
 
 //打开 playinglist.txt 查看发现下面内容
+
 ```scss
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
@@ -153,6 +157,7 @@ INSERT INTO "playinglist" VALUES(4386589,'0',107241581,2,'pop',92182393,'{"id":"
 
 在playinglist.txt里搜索你看不顺眼的字眼 然后改掉它  
 我就改了三个地方 并且把不需要的东西删了改完后如下：
+
 ```scss
 CREATE TABLE playinglist(songid integer,persistid text,collectionid integer,collectiontype integer,eq text,userid integer,json text,extrainfo text,trackorder integer,unique(userid,songid));
 INSERT INTO "playinglist" VALUES(18668448,'0',107241581,2,'pop',92182393,'{"id":"18668448","clientSongType":0,"album":{"id":"1711907","info":{},"picUrl":"http://p2.music.126.net/aoTO1gl7lQYOh_79Ex8xDw==/6636652186139220.jpg","company":"","pic":"6636652186139220","language":"","publishTime":0,"onSale":false,"sales":0,"songSize":0,"name":"-Me-","paid":false},"ftype":0,"clientCommentCount":0,"artists":[{"id":"35397","albumSize":0,"name":"183Club","followed":false}],"hasring":0,"v":2,"popularity":0,"clientCollectionId":"107241581","mvid":"0","clientCollection":{"id":107241581,"subscribed":false,"specialType":5,"additional":{"essence":false},"playCount":1079,"tags":[],"trackUpdateTime":1473269837347,"commentThreadId":"A_PL_0_107241581","subscribedCount":0,"songCount":77,"creator":{"profile":{"vipType":0,"nickname":"望穿墙","userId":92182393,"authStatus":0,"avatar":"http://p3.music.126.net/LdFew32T7uAldtmy4TEGHw==/1365593506486450.jpg"}},"commentCount":0,"offlineSuccCount":69,"trackNumberUpdateTime":1473269837347,"coverImgUrl":"http://p1.music.126.net/NBRRX6l69enZKDqJQdxtCw==/528865094196130.jpg","shareCount":0,"name":"望穿墙喜欢的音乐","updateTime":1473269837347},"t":0,"disc":"","duration":165000,"clientCollectionType":2,"no":7,"name":"魔法 Smile","clientEqString":"pop"}','',0);
@@ -160,6 +165,7 @@ INSERT INTO "playinglist" VALUES(18668448,'0',107241581,2,'pop',92182393,'{"id":
 ```
 然后我们用这里的 SQL 语句来建一个新的表  
 由于不能直接在数据库里面改 我们需要先把 playinglist 这个表删了再重建如下：  
+
 ```scss
 wcq-062821@bogon:~/IOSCrack/neteasemusic
 > sqlite3 music_storage_v2.sqlite3
@@ -204,6 +210,7 @@ sqlite> .exit
 当然你闲得蛋疼也可以一条一条加 233333  
 关闭网易云音乐  
 把music_storage_v2.sqlite3 拷贝回/var/mobile/Containers/Data/Application/ADD802B1-2407-4869-9FB8-0F677C617325/Documents/UserData/music_storage_v2.sqlite3 覆盖掉原来的数据库
+
 ```scss
 wcq-062821@bogon:~/IOSCrack/neteasemusic
 > scp music_storage_v2.sqlite3 root@192.168.1.123:/var/mobile/Containers/Data/Application/ADD802B1-2407-4869-9FB8-0F677C617325/Documents/UserData/music_storage_v2.sqlite3
@@ -254,6 +261,7 @@ mp3 可以直接覆盖 但是歌词不可以 因为一定要按原来你下载�
 ```
 
 对于这个文件先备份一下 然后把不需要的删掉只留下
+
 ```scss
 [00:01.11]魔法 Smile Magical Smile (插曲)
 [00:02.11]唱：183LCUB
@@ -271,6 +279,7 @@ mp3 可以直接覆盖 但是歌词不可以 因为一定要按原来你下载�
     {"tlyric":{"version":3,"lyric":"[by:JoannaN]\n"},"songId":"18668448","lrc":{"version":6,"lyric":"[00:01.11]魔法 Smile Magical Smile (插曲)\n[00:02.11]唱：183LCUB\n[00:03.11]曲：Davor Julama/Jennifer Lee Hershman\n[00:04.11]词：Davor Julama/Jennifer Lee Hershman\n[00:06.01]\n[00:06.11]yeah\n[00:08.39]i know how it feels\n[00:11.55]when i see u smile\n[00:17.16]\n[00:19.70]轻轻 你靠在我胸膛\n[00:27.17]Yeh\n[00:29.70]有一种奇特的力量 不能抵挡\n[00:37.79]\n[00:39.08]我开始乱了步伐 心还傻傻忘了跳\n[00:48.31]或许爱就是这样 让我甘心被你融化\n[01:43.05]或许爱就是这样 让人心甘情愿被你融掉\n[01:51.03][00:56.44]\n[02:33.10][01:51.32][00:57.12]看着你微笑 有一道光芒\n[02:37.93][01:56.15][01:01.64]打在我身上 像一种魔法\n[03:02.07][02:42.19][02:00.83][01:06.49]是你无心布下的爱情圈套\n[02:48.32][02:06.09][01:12.13]让我为了你疯狂 迷人的微笑\n[01:19.95]\n[01:21.26]Woo Baby\n[01:22.88]\n[01:23.27]轻轻 你开口说了话\n[01:32.66]像阵风吹进了心房 微微的发烫\n[01:41.89]\n[02:12.47]我像被施咒的青蛙\n[02:16.06]无法控制的就爱上她\n[02:21.88]不敢多做挣扎\n[02:26.05]难道这会是场梦吗\n[02:31.85]\n[02:57.25]打在我身上\n[02:53.99]see u smile\n[03:07.58]this feelin' is deep inside of me\n[03:13.00]i can't live my life without u\n[03:18.26]when i see u smile\n[03:22.50]when i see u smile\n[03:29.50]\n"},"transUser":{"nickname":"JoannaN"}}
     
 关闭网易云音乐
+
 ```scss
 //LyricsDone目录把18668448.lrc 拷贝到ipad 的/var/mobile/Containers/Data/Application/ADD802B1-2407-4869-9FB8-0F677C617325/Documents/UserData/Download/LyricsDone 目录
 scp 18668448.lrc root@192.168.1.123:/var/mobile/Containers/Data/Application/ADD802B1-2407-4869-9FB8-0F677C617325/Documents/UserData/Download/LyricsDone/18668448.lrc
