@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      "jekyll + github 个人主页添加多说评论插件"
-subtitle:   "居家旅行，行走江湖必备"
+subtitle:   ""
 date:       2016-09-13
 author:     "Wcq"
-header-img: "img/post-duoshuo.jpg"
+header-img: "img/in-post/post-duoshuo.jpg"
 tags:
     - 
     - 
@@ -14,7 +14,7 @@ tags:
 > 据说每一个猿的指尖都隐藏着改变世界的力量  LOL
 
 ### 环境
-* 已经用 jekyll + github 搭好了 github.io 个人主页
+* 已经用 jekyll + github 搭好了 github.io 个人主页  
 
 ### 过程
 网上搜索资料最终发现是要在多说官网把自己的个人主页的网址注册入多说网里  
@@ -28,8 +28,8 @@ tags:
 ![img](/img/in-post/post-duoshuo2.jpg)
 
 开始注册  
-站点名称: xxx
-站点地址：https://xxx.github.io
+站点名称: xxx  
+站点地址：https://xxx.github.io  
 多说域名: 应该是可以自己随意 但是推荐保用 xxx 和你的 xxx.github.io 保持名字一致  
 
 ![img](/img/in-post/post-duoshuo3.jpg)
@@ -68,23 +68,4 @@ tags:
 其实就是把原来写死的duoshuoname写成了变量 这个site.duoshuo_username  
 在_config.yml 文件里定义就可以了 如果要更改多说用户直接改_config.yml 里的duoshuo_username就行了  
 
-
-```scss
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"wcq062821"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-```
 
