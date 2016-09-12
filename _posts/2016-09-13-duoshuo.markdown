@@ -40,32 +40,10 @@ tags:
 把这段代码复制到你的博客的 html 文件的末尾即可  
 为了增加可移植性可以稍作修改如下：  
 
-```scss
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
-<!-- 多说评论框 end -->
-{% if site.duoshuo_username %}
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    // dynamic User by Hux
-    var _user = '{{site.duoshuo_username}}';
+![img](/img/in-post/post-duoshuo5.jpg)
 
-    // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-<!-- 多说公共JS代码 end -->
-{% endif %}
-```
-
+我直接贴代码的时候site.duoshuo_username会直接替换成我的用户名 所在这里只好贴图了  
 其实就是把原来写死的duoshuoname写成了变量 这个site.duoshuo_username  
 在_config.yml 文件里定义就可以了 如果要更改多说用户直接改_config.yml 里的duoshuo_username就行了  
-
+Good Luck!
 
