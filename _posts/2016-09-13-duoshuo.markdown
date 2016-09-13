@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "jekyll + github 个人主页添加多说评论插件"
-subtitle:   ""
+title:      "jekyll + github 个人主页添加多说评论"
+subtitle:   "国内还是多说好"
 date:       2016-09-13
 author:     "Wcq"
 header-img: "img/in-post/post-duoshuo.jpg"
@@ -48,5 +48,9 @@ tags:
 我直接贴代码的时候site.duoshuo_username会直接替换成我的用户名 所在这里只好贴图了  
 其实就是把原来写死的duoshuoname写成了变量 这个site.duoshuo_username  
 在_config.yml 文件里定义就可以了 如果要更改多说用户直接改_config.yml 里的duoshuo_username就行了  
+
+### 结束
+更多高级用法可以进入你的邮箱查收多说发给你的邮件 登陆多说点后台管理  
+以及查看多说开发文档  
 Good Luck!
 
