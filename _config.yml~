@@ -16,7 +16,7 @@ weibo_username:     u/2036476680
 zhihu_username:     wcq062821
 github_username:    wcq062821
 #twitter_username:  wcq062821
-facebook_username:  wcq062821
+facebook_username:  profile.php?id=100013531470635
 # linkedin_username:  firstname-lastname-idxxxx
 
 
@@ -51,7 +51,7 @@ kramdown:
 #disqus_username: _your_disqus_short_name_
 
 # Duoshuo settings
-duoshuo_username: 望穿墙
+duoshuo_username: wcq062821
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
