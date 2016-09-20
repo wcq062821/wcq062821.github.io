@@ -1,0 +1,141 @@
+---
+layout:     post
+title:      "POST提交表单塞爆钓鱼网站"
+subtitle:   "只适用于弱智的钓鱼网站"
+date:       2016-09-21
+author:     "Wcq"
+header-img: "img/in-post/post-python-post.jpg"
+tags:
+    - 
+    - 
+---
+
+
+> 据说每一个猿的指尖都隐藏着改变世界的力量  LOL
+
+
+### 环境
+* Python 2.7.10
+* curl 7.43.0 (x86_64-apple-darwin15.0) libcurl/7.43.0 SecureTransport zlib/1.2.5
+Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+Features: AsynchDNS IPv6 Largefile GSS-API Kerberos SPNEGO NTLM NTLM_WB SSL libz UnixSockets
+
+### 背景
+现在的诈骗信息是越来越多了 信息安全意识稍差的人极有可能中招  
+今天群里一哥们公司的老总就被[http://www.lcoud.cn.com/](http://www.lcoud.cn.com/)这个钓鱼网站钓了。。。  
+为此群里大牛们决定写脚本去塞爆这个钓鱼网站(其实是无聊 找点乐子 hhhhh)
+受巨神们聊天的启发 整理了一下稍加改进就有了这篇随笔
+
+### 思路
+利用 curl 获得钓鱼网站登陆界面的代码 找出关键部分(文本输入框及提交按钮)  
+写一个python脚本  在 while 1 里利用 post 方式提交伪造的用户名和密码  
+
+
+### 实现
+1、利用 curl 获得钓鱼网站登陆界面的代码并存到 source.txt 文件中  
+
+```scss
+wcq-062821@wcqdeMacBook-Pro:~/IOSCrack/tmp
+> curl http://www.lcoud.cn.com/ > source.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  9623  100  9623    0     0   7336      0  0:00:01  0:00:01 --:--:--  7334
+```
+查看 source.txt 搜索 action得到关键代码如下：  
+
+```scss
+    <div class="main">
+
+        <form name="form" action="/Login" method="post" target="_top">
+            <div class="top"><em><img src="./index_files/yun.png" height="25"></em><span><a href="index.htm#" class="shuom"></a><a href="http://www.apple.com/cn/icloud/setup/" target="blank"><img src="./index_files/wenh.png"></a></span></div>
+            <div class="login_main">
+                <div class="login">
+                    <div class="del">
+
+                        <ul>
+                            <li><input type="text" id="accountname" name="username" value="" errormsg="Apple ID" placeholder="Apple ID" class="l_text" autocomplete="off" style="margin-left:10px; background:none; font-family:Arial, Helvetica, sans-serif"></li>
+
+                            <li>
+                                <input type="password" id="accountpassword" name="password" value="" errormsg="Apple 密码" placeholder="Apple 密码" class="l_text" autocomplete="off" style="margin-left:10px; background:none">
+
+
+
+
+
+
+                                <input class="btn" src="./index_files/btn.png" type="image" style="margin-right:10px; margin-top:6px" onClick="this.form.action='login.do';this.form.submit()">
+
+```
+对应的界面如下：  
+
+![img](/img/in-post/post-python-post1.jpg)
+
+由此可知 这个页面的数据是要提交到 http://www.lcoud.cn.com/Login 这个页面处理  
+Apple ID 输入文本框的名字是 username ， Apple 密码 输入文本框的名字是password  
+提交按钮即那个向右的箭头执行的动作是 login.do 好了 有了这些信息 我们就可以写脚本来自动提交这些东西了  
+
+2、写 Python 脚本
+新建一个 post.py 脚本文件 填入下面内容
+
+```scss
+#!/usr/bin/python
+
+import urllib2
+import urllib
+import random
+
+while 1:
+    dat = random.randint(100000000,9999999999)
+    tem = '%d' %dat
+    usern = [tem,'@qq.com']
+    mail = "".join(usern)
+    print mail
+
+    passwdint = random.randint(100000000,9999999999)
+    passwd = '%d' %passwdint
+    print passwd
+    
+    data = {'username' : mail, 'password' : passwd}
+    f = urllib2.urlopen(
+                    url     = 'http://www.lcoud.cn.com/login.do',
+                            data    = urllib.urlencode(data)
+                                    )
+#print(f.read())
+```
+这个脚本伪造了xxxxxxxxx@qq.com 或 xxxxxxxxxx@qq.com 的 Apple ID 和  
+xxxxxxxxx 或 xxxxxxxxxx 的 密码填入文本框 然后打开http://www.lcoud.cn.com/login.do 这个 url  
+就是相当于按上提交按键(右箭头) 由于这里写成了死循环 只要执行这个程序不关闭 它就会一直伪造提交  
+
+3、实验  
+
+```scss
+wcq-062821@bogon:~/IOSCrack/tmp
+> python post.py
+2482615300@qq.com
+4783662202
+4107239344@qq.com
+8524584397
+6160631505@qq.com
+5464987127
+3715364922@qq.com
+3399479821
+1694292525@qq.com
+7180919800
+```
+去掉#print(f.read())这一行的#还可以看到提交后的页面的代码详情  
+
+
+### 总结
+这是一个十分弱智的钓鱼网站 页面仿得十分粗糙 域名也一点都不像在浏览器上连 http://都没有  
+而且即使什么都不填 直接点右箭头 一样可以进入下一个界面。。。。。  
+而且连保持我的登陆状态前面的框都勾不上。。。 好弱智啊！！！  
+当然我们这种python post 的方式也比较弱智 效率不高 据说可以用 curl 或 lua 来实现类似功能  
+有兴趣的可以试一下  
+下次还看到弱智钓鱼网站 无聊的话就可以用这种方法在电脑后台挂着 我相信我也坚信 挂着挂着 钓鱼网站就会变成这样  
+
+![img](/img/in-post/post-python-post2.jpg)
+
+2333
+
+
+
