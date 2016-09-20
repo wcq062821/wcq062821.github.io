@@ -131,6 +131,11 @@ wcq-062821@bogon:~/IOSCrack/tmp
 而且连保持我的登陆状态前面的框都勾不上。。。 好弱智啊！！！  
 当然我们这种python post 的方式也比较弱智 效率不高 据说可以用 curl 或 lua 来实现类似功能  
 有兴趣的可以试一下  
+为了提升效率 我们还可以这样 运行的时候用 python post.py& 来后台运行  
+多开几个就快了 比如我开了 4 个。。。  
+
+![img](/img/in-post/post-python-post3.jpg)
+
 下次还看到弱智钓鱼网站 无聊的话就可以用这种方法在电脑后台挂着 我相信我也坚信 挂着挂着 钓鱼网站就会变成这样  
 
 ![img](/img/in-post/post-python-post2.jpg)
