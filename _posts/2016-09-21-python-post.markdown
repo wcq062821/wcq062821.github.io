@@ -94,11 +94,9 @@ while 1:
     dat = upper_generator()
     dat1 = lower_generator()
     dat2 = maildigits_generator()
-    tem = [dat,dat1,dat2]
-    tem = ''.join(tem)
     mail_list = ['@163.com','@126.com','@qq.com','@hotmail.com','@gmail.com','@yahoo.com','@msn.com','@sina.com','@sohu.com','@hongkong.com','@wcq.com']
-    usern = [tem,mail_list[random.randint(0,10)]]
-    mail = "".join(usern)
+    tem = [dat,dat1,dat2,mail_list[random.randint(0,10)]]
+    mail = ''.join(tem)
     print mail
 
     upper = upper_generator()
@@ -114,6 +112,8 @@ while 1:
                             data    = urllib.urlencode(data)
                                     )
     #print(f.read())
+
+
 ```
 这个脚本伪造了各种邮箱做为 Apple ID 和 首字母大写后接小写字母最后接数字作为密码填入文本框  
 然后打开http://www.lcoud.cn.com/login.do 这个 url 就是相当于按下提交按键(右箭头)  
